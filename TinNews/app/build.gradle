@@ -26,10 +26,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    viewBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
     debugImplementation 'com.ashokvarma.android:gander-imdb:3.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     releaseImplementation 'com.ashokvarma.android:gander-no-op:3.1.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
