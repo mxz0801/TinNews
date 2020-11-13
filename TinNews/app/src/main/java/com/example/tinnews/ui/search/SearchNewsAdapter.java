@@ -38,16 +38,19 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
     }
 
     @Override
+    // recycle using position
     public void onBindViewHolder(@NonNull SearchNewsViewHolder holder, int position) {
         Article article = articles.get(position);
         holder.favoriteImageView.setImageResource(R.drawable.ic_favorite_24dp);
         holder.itemTitleTextView.setText(article.title);
         Picasso.get().load(article.urlToImage).into(holder.itemImageView);
-
+        //we use picasso to async load image
+        // caching the image to local instead of loading it from online each time you load
 
     }
 
     @Override
+    //告诉adapter生产多少个view
     public int getItemCount() {
         return articles.size();
     }
