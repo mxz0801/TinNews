@@ -70,14 +70,13 @@ public class HomeFragment extends Fragment implements CardStackListener {
 
         //set up cardStackView
         CardSwipeAdapter swipeAdapter = new CardSwipeAdapter();
-        layoutManager = new CardStackLayoutManager(requireContext());
+        layoutManager = new CardStackLayoutManager(requireContext(),this);
         layoutManager.setStackFrom(StackFrom.Top);
         binding.homeCardStackView.setLayoutManager(layoutManager);
         binding.homeCardStackView.setAdapter(swipeAdapter);
 
         //handle like and unlike button click
         binding.homeLikeButton.setOnClickListener(v -> swipeCard(Direction.Right));
-
         binding.homeUnlikeButton.setOnClickListener(v -> swipeCard(Direction.Left));
 
 
@@ -111,10 +110,9 @@ public class HomeFragment extends Fragment implements CardStackListener {
             Log.d("CardStackView", "Unliked " + layoutManager.getTopPosition());
         } else if (direction == Direction.Right) {
             Log.d("CardStackView", "Liked "  + layoutManager.getTopPosition());
+            Article article = articles.get(layoutManager.getTopPosition()-1);
+            viewModel.setFavoriteArticleInput(article);
         }
-
-        Article article = articles.get(layoutManager.getTopPosition()-1);
-        viewModel.setFavoriteArticleInput(article);
     }
 
 

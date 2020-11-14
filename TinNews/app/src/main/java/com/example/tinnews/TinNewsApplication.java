@@ -19,7 +19,8 @@ public class TinNewsApplication extends Application {
        super.onCreate();
        Gander.setGanderStorage(GanderIMDB.getInstance());
        Stetho.initializeWithDefaults(this);
-       database = Room.databaseBuilder(this,TinNewsDatabase.class,"tinnews_db").build();
+        database = Room.databaseBuilder(this, TinNewsDatabase.class, "tinnews_db").build();
+
     }
 
     public TinNewsDatabase getDatabase(){
