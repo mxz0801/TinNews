@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.util.Log;
@@ -22,7 +23,6 @@ import com.example.tinnews.repository.NewsViewModelFactory;
 public class SearchFragment extends Fragment {
     private SearchViewModel viewModel;
     private FragmentSearchBinding binding;
-
 
 
     public SearchFragment() {
@@ -87,6 +87,13 @@ public class SearchFragment extends Fragment {
 
                             }
                         });
+
+        newsAdapter.setItemCallback(article -> {
+            SearchFragmentDirections.ActionNavigationSearchToNavigationDetails direction = SearchFragmentDirections.actionNavigationSearchToNavigationDetails(article);
+            NavHostFragment.findNavController(SearchFragment.this).navigate(direction);
+        });
+
+
     }
 
 }

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -76,6 +77,8 @@ public class SaveFragment extends Fragment {
             @Override
             public void onOpenDetails(Article article) {
                 Log.d("onOpenedDetail", article.toString());
+                SaveFragmentDirections.ActionNavigationSaveToNavigationDetails direction = SaveFragmentDirections.actionNavigationSaveToNavigationDetails(article);
+                NavHostFragment.findNavController(SaveFragment.this).navigate(direction);
             }
 
             @Override
@@ -83,5 +86,7 @@ public class SaveFragment extends Fragment {
                 viewModel.deleteSavedArticle(article);
             }
         });
+
+
     }
 }
