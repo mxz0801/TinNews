@@ -28,6 +28,7 @@
 
         <TextView
             android:id="@+id/details_date_text_view"
+            android:textColor="@color/gander_status_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@tools:sample/date/mmddyy"/>
